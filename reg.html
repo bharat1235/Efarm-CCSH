@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Registration form</title>
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link rel="stylesheet" href="style.css">
+   <script type="text/javascript">
+   var lang,reg;
+	 function fun(o)
+	 {
+		lang=o;
+	 }
+	 function fun1(r)
+	 {
+		reg=r;
+	 }
+   function validate()
+   {
+      //alert("hello");
+	   
+      var fn=document.getElementById('fn').value;
+	  var ln=document.getElementById('ln').value;
+	  var adh=document.getElementById('aid').value;
+	  var ps=document.getElementById('ps').value;
+	  var cps=document.getElementById('cps').value;
+	  var mail=document.getElementById('mail').value;
+	  var phn=document.getElementById('num').value;
+	  var atpos=mail.indexOf("@");
+	  var dotpos=mail.lastIndexOf(".");
+
+	  if(ps==""||cps==""|| ln==""||mail==""||phn=="" || adh=="" || fn=="")
+	  {
+	      alert('plz check for empty input fields');
+	  }
+	  else if(fn.length<1 && ln.length<1)
+	  {
+	     alert('Invalid First and Last name');
+	  }
+	  else if(adh.length!=12)
+	  {
+	     alert('Invalid Aadhar Card no.');
+	  }
+	  else  if(atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length)
+	  {
+	      alert('Invalid email address');
+	  }
+	  else if(ps!=cps)
+	  {
+	     alert('Password not matched');
+	  }
+	  else if(phn.length!=10)
+	  {
+	     alert('Invalid Phone number');
+	  }
+	  else if(!reg)
+	  {
+	     alert('Select Region');
+	  }
+	  else if(!lang)
+	  {
+	     alert('Select Language');
+	  }
+	  else
+	     window.location="newreg.php?fn="+fn+"&adh="+adh+"&ps="+ps+"&mail="+mail+"&reg="+reg+"&lang="+lang+"&phn="+phn; 
+   }
+   
+
+</script>
+ 
+<body align=center>
+<div id="login">
+<div class="card-panel teal lighten-9"> 
+ 
+
+      <div class="row">
+        <div class="col s15 m15">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Registration Form</span>
+    
+         
+		 <input type=text id="fn" placeholder="First Name" required/><br>
+		 <input type=text id="ln" placeholder="last Name" required/><br>
+		 <input type=text id="aid" placeholder="Enter Aadhar Card no" required/><br>
+		 <input type=password id="ps" placeholder="Enter password" required/><br>
+		 <input type=password id="cps" placeholder="confirm password" required/><br>
+		 <input type=text id="mail" placeholder="Enter Email" required/><br>		 
+		 <input type=text id="num" placeholder="mobile number" required/><br>
+		 <select id="reg" onchange=fun1(this.value) required><br>
+		    <option value="region">Select region</option>
+			<option  value="viz">viz</option>
+			<option value="akp">akp</option>
+			<option value="gwk">gwk</option>
+			<option value="ark">ark</option>
+		 </select><br>
+		 <select  id="lang" onchange=fun(this.value)  >
+			<option value="lang">Select Language</option>
+			<option value="eng">English</option>
+			<option value="tel">Telugu</option>
+		 </select>
+		 
+		 
+		 </div>
+		   <a input type="button" value="Submit" onclick=validate() class="waves-effect waves-light btn">Submit</a>
+		     <a input type="reset" class="waves-effect waves-light btn">Reset</a>
+		 
+		 </div>
+		 </div>
+		  </div>
+            
+</div>			 
+        
+  
+
+</body>
+</html>

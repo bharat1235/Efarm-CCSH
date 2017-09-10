@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Login page</title>
+<script type="text/javascript">
+function validate()
+{
+    attempt=3;
+   //alert('hello');
+   var x=document.getElementById('d1').value;
+   var y=document.getElementById('d2').value;
+   if(x=="" || y=="")
+   {
+      alert('Plz enter Aadhar no and password');
+	  return false;
+   }
+	else if(x.length!=12)
+   {
+      alert('Invalid UID');
+	  return false;
+   }
+   else if(y.length<8)
+	{
+	   alert('Password should contain atleast 8 characters');
+	   return false;
+	}
+	else
+		window.location="login.php?uid="+x+"&ps="+y;
+}
+</script>
+</head>
+<body align=center> 
+<div id="login">
+	   <h2>Login</h2><br />
+       <input type="text" name=usr id="d1" placeholder="Enter Aadhaar Card no"/><br />
+       <input type="password" name=pswd id="d2" placeholder="Enter Password"/><br />
+       <input type=submit id="login-btn" value="Sign In" onclick="validate()"/>
+</div>
+</body>
+</html>
